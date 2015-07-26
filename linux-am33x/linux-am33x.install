@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-am33x
-KERNEL_VERSION=4.1.0-2-rt1
+KERNEL_VERSION=4.1.0-2-rt3
 
 post_install () {
   # updating module dependencies
