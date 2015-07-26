@@ -4,27 +4,25 @@
 buildarch=4
 
 pkgbase=linux-am33x
-_srcname=linux-4.1
+_srcname=linux-4.1.3
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=4.1.2
-pkgrel=2
-rcnrel=bone12
+pkgver=4.1.3
+pkgrel=1
+rcnrel=bone13
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "http://rcn-ee.com/deb/sid-armhf/v${pkgver}-${rcnrel}/patch-${pkgver%.0}-${rcnrel}.diff.gz"
-		"https://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.2-rt1.patch.gz"
+		"https://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-4.1.3-rt3.patch.gz"
         "git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs${pkgver%.*}"
         #"git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs4.x-rcN"
 		'http://rcn-ee.com/deb/sid-armhf/v4.1.2-ti-rt-r4/defconfig'
         'config')
 md5sums=('SKIP'
-		 'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -35,9 +33,6 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   wget http://arago-project.org/git/projects/?p=am33x-cm3.git\;a=blob_plain\;f=bin/am335x-pm-firmware.bin\;hb=HEAD -O firmware/am335x-pm-firmware.elf
 
-
-  # add upstream patch
-  git apply --whitespace=nowarn "${srcdir}/patch-${pkgver}"
 
   # ALARM patches
   git apply "${srcdir}/patch-${pkgver%.0}-${rcnrel}.diff"
@@ -54,8 +49,8 @@ prepare() {
   git apply ../aufs4-standalone/aufs4-standalone.patch
 
   # add realtime patch
-  msg "applying patch-${pkgver}-rt1.patch"
-  patch -p1 -i "${srcdir}/patch-${pkgver}-rt1.patch"
+  msg "applying patch-${pkgver}-rt3.patch"
+  patch -p1 -i "${srcdir}/patch-${pkgver}-rt3.patch"
 
   cat "${srcdir}/defconfig" > ./.config
 
