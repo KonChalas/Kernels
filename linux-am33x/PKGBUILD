@@ -20,10 +20,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs${pkgver%.*}"
         #"git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs4.x-rcN"
         'config')
-md5sums=('SKIP'
+md5sums=('96c2c77b1c54ba01cfd8fc2d13fbf828'
+         '0f73564ae9c14a9c494a7c237ac62598'
          'SKIP'
-         'SKIP'
-         'SKIP')
+         'f1cba114e0134ab9c836c9b352b59062')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
