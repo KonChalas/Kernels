@@ -22,12 +22,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         #"git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs4.x-rcN"
 		'http://rcn-ee.com/deb/sid-armhf/v4.1.2-ti-rt-r4/defconfig'
         'config')
-md5sums=('SKIP'
+md5sums=('96c2c77b1c54ba01cfd8fc2d13fbf828'
+		 '0f73564ae9c14a9c494a7c237ac62598'
+         '5f81d70e8921287b9a07893a9e26745f'
          'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         'af30c8de0476b8e650c3cf5cfd316969'
+         'b39a431c28320ef90c22db79e9c6aff8')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
