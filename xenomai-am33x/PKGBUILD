@@ -3,12 +3,12 @@
 
 buildarch=4
 
-pkgbase=linux-am33x
+pkgbase=xenomai-am33x
 _srcname=linux
 _xenomai_root=xenomai-3
 _kernelname=${pkgbase#linux}
 _desc="TI AM335x Beaglebone (Black)"
-pkgver=3.14.51
+pkgver=3.14.44
 pkgrel=1
 rcnrel=ti-xenomai-r74
 arch=('armv7h')
@@ -16,7 +16,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-CROSS_COMPILER_PATH='/home/kchalas/Workspace/x-tools7h/arm-unknown-linux-gnueabihf/bin/armv7l-unknown-linux-gnueabihf-'
+CROSS_COMPILER_PATH='/home/konstantinos/x-tools7h/arm-unknown-linux-gnueabihf/bin/armv7l-unknown-linux-gnueabihf-'
 source=("linux::git+https://github.com/beagleboard/linux.git#commit=e99d350e5ba34ef020d2f3bf585134571f1bb323"
 'xenomai-3::git+https://git.xenomai.org/xenomai-3.git'
 'https://raw.githubusercontent.com/beagleboard/linux/ffc24f719484d496efafe3cf700b455af67ca23e/arch/arm/configs/bb.org_defconfig'
@@ -102,7 +102,7 @@ _package() {
     -i "${startdir}/${pkgname}.install"
 
   # remove build and source links
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+  #rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
   # gzip -9 all modules to save 100MB of space
